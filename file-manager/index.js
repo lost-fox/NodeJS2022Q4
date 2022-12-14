@@ -7,6 +7,7 @@ import { cd } from "./src/cd.js";
 import { parsePath } from "./parsePath.js";
 import { up } from "./src/up.js";
 import { cat } from "./src/cat.js";
+import { add } from "./src/add.js";
 
 const index = () => {
    const userName = argv();
@@ -34,7 +35,10 @@ const index = () => {
             break;
          case 'cat':
             await cat(rootDir, input);
-            break;   
+            break;  
+         case 'add':
+            add(rootDir, input);
+            break; 
          case 'ls': 
             ls(rootDir);
             break;
