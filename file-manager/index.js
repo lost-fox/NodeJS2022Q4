@@ -5,6 +5,7 @@ import { stdin as input, stdout as output } from "node:process";
 import { ls } from "./src/ls.js";
 import { cd } from "./src/cd.js";
 import { parsePath } from "./parsePath.js";
+import { up } from "./src/up.js";
 
 const index = () => {
    const userName = argv();
@@ -12,23 +13,24 @@ const index = () => {
 
    const rl = readline.createInterface({input, output, prompt: `You are currently in ${rootDir + EOL}` })
 
-   const changePath = async (input) => {
+   const changePath = async(input) => {
       const newDir = await cd(rootDir, input);
       if (newDir !== '') {
-          rootDir = newDir;
+         rootDir = newDir;
       } else {
          console.log(`'\x1b[31mOperation failed\x1b[0m'`)
       }
    };
 
-   const operations = (value) => {
+   const operations = async(value) => {
       const {operation, input} = parsePath(value);
       switch (operation) {
          case 'up':
+            rootDir = up(rootDir);
             break;
          case 'cd':
-            changePath(input);
-            break
+            await changePath(input);
+            break;
          case 'ls': 
             ls(rootDir);
             break;
@@ -45,8 +47,8 @@ const index = () => {
 
    const statr = () => {
       rl.prompt();
-      rl.on('line', (line) => {
-         operations(line.trim());
+      rl.on('line', async (line) => {
+         await operations(line.trim());
          rl.prompt();
       }).on('close', () => {
          console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
