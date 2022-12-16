@@ -10,6 +10,8 @@ import { cat } from "./src/cat.js";
 import { add } from "./src/add.js";
 import { rn } from "./src/rn.js";
 import { cp } from "./src/cp.js";
+import { mv } from "./src/mv.js";
+import { rm } from "./src/rm.js";
 
 const index = () => {
    const userName = argv();
@@ -47,6 +49,12 @@ const index = () => {
          case 'cp':
             await cp(rootDir, input);
             break; 
+         case 'mv':
+            await mv(rootDir, input);
+            break;
+         case 'rm':
+            await rm(rootDir, input);
+            break;
          case 'ls': 
             ls(rootDir);
             break;

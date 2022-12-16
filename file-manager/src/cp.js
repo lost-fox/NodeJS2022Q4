@@ -17,7 +17,7 @@ export const cp = async(url, data) => {
       const readable = fs.createReadStream(oldPath, {encoding: 'utf-8'});
       const writable = fs.createWriteStream(newPath);
       readable.pipe(writable);
-      console.log(`'\x1b[32mFile copied\x1b[0m'`); 
+      console.log(`'\x1b[32mFile changed\x1b[0m'`); 
 
    } catch (error) {
       console.log(`'\x1b[31mOperation failed\x1b[0m'`);
