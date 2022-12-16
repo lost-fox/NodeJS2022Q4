@@ -9,6 +9,7 @@ import { up } from "./src/up.js";
 import { cat } from "./src/cat.js";
 import { add } from "./src/add.js";
 import { rn } from "./src/rn.js";
+import { cp } from "./src/cp.js";
 
 const index = () => {
    const userName = argv();
@@ -41,8 +42,11 @@ const index = () => {
             add(rootDir, input);
             break; 
          case 'rn':
-            await rn(rootDir, input)
-            break;   
+            await rn(rootDir, input);
+            break;  
+         case 'cp':
+            await cp(rootDir, input);
+            break; 
          case 'ls': 
             ls(rootDir);
             break;
