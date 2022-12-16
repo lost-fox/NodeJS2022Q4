@@ -8,6 +8,7 @@ import { parsePath } from "./parsePath.js";
 import { up } from "./src/up.js";
 import { cat } from "./src/cat.js";
 import { add } from "./src/add.js";
+import { rn } from "./src/rn.js";
 
 const index = () => {
    const userName = argv();
@@ -39,6 +40,9 @@ const index = () => {
          case 'add':
             add(rootDir, input);
             break; 
+         case 'rn':
+            await rn(rootDir, input)
+            break;   
          case 'ls': 
             ls(rootDir);
             break;
