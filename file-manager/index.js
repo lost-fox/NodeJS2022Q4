@@ -13,6 +13,7 @@ import { cp } from "./src/cp.js";
 import { mv } from "./src/mv.js";
 import { rm } from "./src/rm.js";
 import { funOS } from "./src/os.js";
+import { calcHash } from "./src/hash.js";
 
 const index = () => {
    const userName = argv();
@@ -62,6 +63,9 @@ const index = () => {
          case 'ls': 
             ls(rootDir);
             break;
+         case 'hash':
+            await calcHash(rootDir, input);
+            break;   
          case 'exit': 
             console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
             process.exit();
