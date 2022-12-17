@@ -24,6 +24,10 @@ const index = () => {
    const rl = readline.createInterface({input, output, prompt: `You are currently in ${rootDir + EOL}` })
 
    const changePath = async(input) => {
+      if (input[0] == '..') {
+         rootDir = up(rootDir);
+         return;
+      }
       const newDir = await cd(rootDir, input);
       if (newDir !== '') {
          rootDir = newDir;
