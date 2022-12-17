@@ -14,6 +14,8 @@ import { mv } from "./src/mv.js";
 import { rm } from "./src/rm.js";
 import { funOS } from "./src/os.js";
 import { calcHash } from "./src/hash.js";
+import { compress } from "./src/compress.js";
+import { decompress } from "./src/decompress.js";
 
 const index = () => {
    const userName = argv();
@@ -65,7 +67,13 @@ const index = () => {
             break;
          case 'hash':
             await calcHash(rootDir, input);
-            break;   
+            break;
+         case 'compress':
+            await compress(rootDir, input);
+            break;
+         case 'decompress':
+            await decompress(rootDir, input);
+            break;         
          case 'exit': 
             console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
             process.exit();
