@@ -12,6 +12,7 @@ import { rn } from "./src/rn.js";
 import { cp } from "./src/cp.js";
 import { mv } from "./src/mv.js";
 import { rm } from "./src/rm.js";
+import { funOS } from "./src/os.js";
 
 const index = () => {
    const userName = argv();
@@ -54,6 +55,9 @@ const index = () => {
             break;
          case 'rm':
             await rm(rootDir, input);
+            break;
+         case 'os':
+            funOS(input);
             break;
          case 'ls': 
             ls(rootDir);
